@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: client
 spec:
-  replicas: 5  # Five client instances
+  replicas: 1  # Five client instances
   selector:
     matchLabels:
       app: distributed-app

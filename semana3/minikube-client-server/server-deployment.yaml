@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: server
 spec:
-  replicas: 3  # Three server instances
+  replicas: 1  # Three server instances
   selector:
     matchLabels:
       app: distributed-app
