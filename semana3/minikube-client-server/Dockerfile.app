@@ -1,11 +1,10 @@
 FROM python-minimal
 
-# Clona seu repositório
+# REMOVE repositório antigo, se existir (previne cache)
+RUN rm -rf /app
+
+# Clone seu repositório atualizado
 RUN git clone https://github.com/manoelargc/SD.git /app
 
-# Define o diretório correto onde estão os arquivos
+# Vá para o diretório certo
 WORKDIR /app/semana3/tcp
-
-# Observação:
-# ├── client/client.py
-# └── server/server.py

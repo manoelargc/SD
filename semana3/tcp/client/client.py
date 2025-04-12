@@ -1,17 +1,13 @@
+import os
+import requests
 import time
-from socket import *
 
-time.sleep(2)
+SERVER_URL = os.getenv('SERVER_URL')
 
 while True:
     try:
-        s = socket(AF_INET, SOCK_STREAM)
-        s.connect(('server-service', 12345))  
-        s.send(b'Hello, world')
-        data = s.recv(1024)
-        print("Resposta do servidor:", data)
-        s.close()
-        time.sleep(3)
+        response = requests.get(SERVER_URL)
+        print(f"Client {os.getenv('HOSTNAME')} received: {response.text}")
     except Exception as e:
-        print("Erro ao conectar no servidor:", e)
-        time.sleep(3)
+        print(f"Error contacting server: {e}")
+    time.sleep(3)
