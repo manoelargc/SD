@@ -6,7 +6,7 @@ time.sleep(2)
 while True:
     try:
         s = socket(AF_INET, SOCK_STREAM)
-        s.connect(('server-service', 12345))  # nome correto do service
+        s.connect(('server-service', 12345))  
         s.send(b'Hello, world')
         data = s.recv(1024)
         print("Resposta do servidor:", data)
