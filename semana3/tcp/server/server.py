@@ -1,16 +1,13 @@
-from socket import *
+from flask import Flask
+app = Flask(__name__)
 
-s = socket(AF_INET, SOCK_STREAM)
-s.bind(('', 12345))
-s.listen(5)
+request_count = 0
 
-print('Servidor aguardando conexões...')
+@app.route('/')
+def hello():
+    global request_count
+    request_count += 1
+    return f"Hello from server! Request count: {request_count}"
 
-while True:
-    conn, addr = s.accept()
-    print(f'Conexão recebida de {addr}')
-    data = conn.recv(1024)
-    if not data:
-        break
-    conn.send(data + b'*')  # devolve os dados com um "*"
-    conn.close()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
