@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: client
 spec:
-  replicas: 5
+  replicas: 5  # Five client instances
   selector:
     matchLabels:
       app: distributed-app
@@ -15,10 +15,9 @@ spec:
         role: client
     spec:
       containers:
-        - name: client
-          image: my-distributed-app
-          imagePullPolicy: Never
-          command: ["python3", "client/client.py"]
-          env:
-            - name: SERVER_URL
-              value: "http://server-service:8000"
+      - name: client
+        image: my-distributed-app
+        command: ["python3", "client.py"]
+        env:
+        - name: SERVER_URL
+          value: "http://server-service:8000"  # Kubernetes DNS name for servers
