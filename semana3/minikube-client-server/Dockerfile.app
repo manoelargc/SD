@@ -1,9 +1,9 @@
 FROM python-minimal
 
-# Clone o repositório inteiro
+# Clone o repositório
 RUN git clone https://github.com/manoelargc/SD.git /repo
 
-# Copie só a subpasta que você quer
-RUN mkdir /app && cp -r /repo/semana3/minikube-client-server/* /app/
+# Copia apenas a pasta desejada
+RUN cp -r /repo/semana3/minikube-client-server/* /app/
 
 WORKDIR /app
