@@ -2,14 +2,15 @@ from socket import *
 
 s = socket(AF_INET, SOCK_STREAM)
 s.bind(('', 12345))
-s.listen(1)
-# print('Server is listening...')
+s.listen(5)
 
-(conn, addr) = s.accept()  # retorna novo socket e endereço do cliente
+print('Servidor aguardando conexões...')
+
 while True:
-    print('Server is listening...')
-    data = conn.recv(1024)  # recebe dados do cliente
+    conn, addr = s.accept()
+    print(f'Conexão recebida de {addr}')
+    data = conn.recv(1024)
     if not data:
-        break  # encerra se o cliente parar
-    conn.send(str(data).encode() + b"*")  # devolve os dados com um "*"
-conn.close()
+        break
+    conn.send(data + b'*')  # devolve os dados com um "*"
+    conn.close()

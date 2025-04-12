@@ -1,13 +1,11 @@
 FROM python-minimal
 
-# Clone your application code
-RUN git clone https://github.com/yourusername/yourrepo.git /app
-WORKDIR /app
+# Clona seu repositório
+RUN git clone https://github.com/manoelargc/SD.git /app
 
-# Example structure assumes:
-# - server.py contains server code
-# - client.py contains client code
-#yourrepo/
-#├── server.py
-#├── client.py
-#└── (other files)
+# Define o diretório correto onde estão os arquivos
+WORKDIR /app/semana3/tcp
+
+# Observação:
+# ├── client/client.py
+# └── server/server.py
