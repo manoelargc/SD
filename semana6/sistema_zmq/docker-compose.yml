@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    ports:
+      - "5555:5555"
+
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    depends_on:
+      - servidor

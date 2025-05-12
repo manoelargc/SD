@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servidor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: servidor
+  template:
+    metadata:
+      labels:
+        app: servidor
+    spec:
+      containers:
+        - name: servidor
+          image: servidor:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5555
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: servidor
+spec:
+  selector:
+    app: servidor
+  ports:
+    - protocol: TCP
+      port: 5555
+      targetPort: 5555

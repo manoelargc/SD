@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cliente
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cliente
+  template:
+    metadata:
+      labels:
+        app: cliente
+    spec:
+      containers:
+        - name: cliente
+          image: cliente:latest
+          imagePullPolicy: Never
